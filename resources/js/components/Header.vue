@@ -1,7 +1,7 @@
 <template>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
+            <a class="navbar-brand ps-3" href="#">Start Bootstrap</a>
             <!-- Sidebar Toggle-->
             <button
                 class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
@@ -42,7 +42,7 @@
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                         ><i class="fas fa-user fa-fw"></i
-                    ></a>
+                    >hello</a>
                     <ul
                         class="dropdown-menu dropdown-menu-end"
                         aria-labelledby="navbarDropdown"

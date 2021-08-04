@@ -14,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::orderBy('created_at','desc')->paginate();
+        return response()->json($categories,200);
     }
 
     /**
@@ -93,6 +94,16 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        if($category){
+            return response()->json([
+                'message' => 'Category deleted successfuly !',
+                'status_code' => 200
+            ],200);
+        }else {
+            return response()->json([
+                'message' => 'Error !',
+                'status_code' => 500
+            ],500);
+        }
     }
 }

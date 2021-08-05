@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -47,7 +48,10 @@ class CategoryController extends Controller
         if($category->save()){
             return response()->json($category,200);
         }else{
-            return response()->json($category,500);
+            return response()->json([
+                'message' => 'Some error occurred , Please try again !',
+                'status_code' => 500   
+            ], 500);            
         }
         
     }
@@ -94,7 +98,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        if($category){
+        if($category->delete()){
+            Storage::delete($category->image);
             return response()->json([
                 'message' => 'Category deleted successfuly !',
                 'status_code' => 200

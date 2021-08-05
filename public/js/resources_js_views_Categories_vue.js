@@ -2077,7 +2077,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   name: "",
                   image: ""
                 };
-                _context2.next = 24;
+                _context2.next = 23;
                 break;
 
               case 14:
@@ -2089,17 +2089,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 19:
                 this.errors = _context2.t0.response.data.errors;
-                return _context2.abrupt("break", 24);
+                return _context2.abrupt("break", 23);
 
               case 21:
                 this.flashMessage.error({
                   message: "Some error occurred, Please try again!",
                   time: 5000
                 });
-                alert("Some error occurred!");
-                return _context2.abrupt("break", 24);
+                return _context2.abrupt("break", 23);
 
-              case 24:
+              case 23:
               case "end":
                 return _context2.stop();
             }
@@ -2132,19 +2131,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _services_category_service__WEBPACK_IMPORTED_MODULE_1__.deleteCategory(category.id);
 
               case 5:
-                _context3.next = 9;
+                this.categories = this.categories.filter(function (obj) {
+                  return obj.id != category.id;
+                });
+                this.flashMessage.success({
+                  message: "Category deleted successfully!",
+                  time: 5000
+                });
+                _context3.next = 12;
                 break;
 
-              case 7:
-                _context3.prev = 7;
-                _context3.t0 = _context3["catch"](2);
-
               case 9:
+                _context3.prev = 9;
+                _context3.t0 = _context3["catch"](2);
+                this.flashMessage.error({
+                  message: _context3.t0.response.data.message,
+                  time: 5000
+                });
+
+              case 12:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[2, 7]]);
+        }, _callee3, this, [[2, 9]]);
       }));
 
       function deleteCategory(_x) {

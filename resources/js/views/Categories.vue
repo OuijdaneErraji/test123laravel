@@ -192,8 +192,7 @@ export default {
                         this.flashMessage.error({
                             message: "Some error occurred, Please try again!",
                             time: 5000
-                        });
-                        alert("Some error occurred!");
+                        });                      
                         break;
                 }
             }
@@ -204,8 +203,19 @@ export default {
         }
         try {
             await categoryService.deleteCategory(category.id);
+
+            this.categories = this.categories.filter(obj =>{
+                return obj.id != category.id;
+            });
+            this.flashMessage.success({
+                    message: "Category deleted successfully!",
+                    time: 5000
+                });
         } catch (error) {
-            
+            this.flashMessage.error({
+                            message: error.response.data.message,
+                            time: 5000
+                        });
         }
     }
     }
